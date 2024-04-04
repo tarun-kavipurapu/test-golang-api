@@ -37,6 +37,9 @@ docker compose up
 ```
 #### Create Restaurant
 ```
+provide the Auth token in here which is obtained from the login endpoint
+```
+```
 {
   "restaurant_name": "Your Restaurant Name",
   "restaurant_contact": "+15551234567",
