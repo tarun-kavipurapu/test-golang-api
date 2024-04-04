@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  test-golang:
+    image: test-golang:latest
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=testdb
+      - POSTGRES_INITDB_ARGS="--auth-host=scram-sha-256"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    
+volumes:
+  postgres_data:
